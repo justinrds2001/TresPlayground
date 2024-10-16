@@ -1,0 +1,27 @@
+{
+	"name": "tresplayground",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@tresjs/cientos": "^4.0.3",
+		"@tresjs/core": "^4.3.1",
+		"@tresjs/post-processing": "^1.0.0-next.0",
+		"three": "^0.169.0",
+		"tweakpane": "^4.0.4",
+		"vue": "^3.5.10"
+	},
+	"devDependencies": {
+		"@tweakpane/core": "^2.0.4",
+		"@types/three": "^0.169.0",
+		"@vitejs/plugin-vue": "^5.1.4",
+		"typescript": "^5.5.3",
+		"vite": "^5.4.8",
+		"vue-tsc": "^2.1.6"
+	}
+}
