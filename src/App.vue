@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { TresCanvas } from "@tresjs/core";
 import { TransformControls, OrbitControls, GLTFModel } from "@tresjs/cientos";
-import { computed, reactive, shallowRef, watch } from "vue";
-import { Object3D } from "three";
+import { reactive, shallowRef, watch } from "vue";
 import { Pane } from "tweakpane";
-import { EffectComposer, Outline } from "@tresjs/post-processing";
+import { useTresStore } from "./store/store";
+import OutlinePass from "./OutlinePass.vue";
 
+const store = useTresStore();
 const modelRef = shallowRef();
 watch(modelRef, (value) => {
-	console.log(value.instance.children);
+	store.object = value.instance.children;
 });
 const state = reactive({
 	edit: false,
@@ -27,7 +28,7 @@ pane.addBinding(state, "mode", {
 </script>
 
 <template>
-	<TresCanvas window-size render-mode="on-demand">
+	<TresCanvas clear-color="#5742f5" window-size render-mode="on-demand">
 		<TresPerspectiveCamera />
 		<OrbitControls make-default />
 		<TransformControls
@@ -45,6 +46,7 @@ pane.addBinding(state, "mode", {
 		</Suspense>
 		<TresAmbientLight :intensity="1" />
 		<TresGridHelper />
+		<OutlinePass />
 	</TresCanvas>
 </template>
 
